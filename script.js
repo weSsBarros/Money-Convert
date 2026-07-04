@@ -3,7 +3,7 @@ const moedaDe = document.getElementById("moedaDe");
 const moedaPara = document.getElementById("moedaPara");
 const resultado = document.getElementById("resultado");
 
-function converterMoeda(){
+function converterMoeda() {
   const inputValor = document.getElementById("valor").value;
   const valorConvert = document.getElementById("convert");
   const valorConverted = document.getElementById("converted");
@@ -11,13 +11,16 @@ function converterMoeda(){
   const valorDolar = 5.2;
 
   const resultado = inputValor / valorDolar;
-  valorConvert.innerHTML = inputValor;
+  valorConvert.innerHTML = new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  }).format(inputValor);
+  valorConverted.innerHTML = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  }).format(resultado);
 
   console.log(valorConverted);
 }
-
-
-
-
 
 converter.addEventListener("click", converterMoeda);
